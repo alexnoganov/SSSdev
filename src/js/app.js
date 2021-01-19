@@ -74,16 +74,16 @@ function priceTab() {
       let tabId = currentBtn.getAttribute("data-tab");
       let currnetTab = document.querySelector(tabId);
 
-      if (!currentBtn.classList.contains("active")) {
+      if (!currentBtn.classList.contains("active__tab")) {
         tabsBtns.forEach((btn) => {
-          btn.classList.remove("active");
+          btn.classList.remove("active__tab");
         });
         tabsItems.forEach((item) => {
-          item.classList.remove("active");
+          item.classList.remove("active__tab");
         });
 
-        currentBtn.classList.add("active");
-        currnetTab.classList.add("active");
+        currentBtn.classList.add("active__tab");
+        currnetTab.classList.add("active__tab");
       }
     });
   }
@@ -127,20 +127,117 @@ function phoneMask(id) {
 }
 
 function handleButtonClick(btnId, target) {
-  document.querySelector(btnId).addEventListener("click", () => {
-    document
-      .querySelector(target)
-      .scrollIntoView({ block: "start", behavior: "smooth" });
+  document.querySelectorAll(btnId).forEach((item) => {
+    item.addEventListener("click", () => {
+      document
+        .querySelector(target)
+        .scrollIntoView({ block: "start", behavior: "smooth" });
+    });
   });
 }
 
+function doubleclickbtn() {
+  const el = document.getElementById("call");
+  el.addEventListener("click", () => {
+    document.getElementById("parent__call").classList.toggle("display_flex");
+  });
+}
+
+jQuery(function ($) {
+  $(document).mouseup(function (e) {
+    // событие клика по веб-документу
+    var div = $("#call");
+    var div2 = $("#parent__call");
+    if (
+      !div.is(e.target) && // если клик был не по нашему блоку
+      div.has(e.target).length === 0
+    ) {
+      // и не по его дочерним
+      div2.removeClass("display_flex");
+    }
+  });
+});
+
+document.getElementById("hover").addEventListener("click", () => {
+  document.getElementById("hover").classList.toggle("wtau__hover");
+});
+
+function burgerMenu(selector) {
+  let menu = document.querySelector(selector);
+  let button = menu.querySelector(".burger-menu__botton");
+  let links = menu.querySelectorAll(".burger-menu__link");
+  let overlay = menu.querySelector(".burger-menu__overlay");
+  let ham = document.querySelector(".ham");
+  let arrow = menu.querySelector(".arrow-icon");
+  let arrow2 = menu.querySelector(".arrow-icon2");
+  let logo = document.getElementById("logo");
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    toggleMenu();
+  });
+
+  logo.addEventListener("click", () => {
+    toggleMenu();
+    ham.classList.remove("active");
+  });
+
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      toggleMenu();
+      ham.classList.remove("active");
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    toggleMenu();
+    if (ham.classList.contains("active")) {
+      ham.classList.remove("active");
+    }
+
+    if (arrow.classList.contains("open")) {
+      arrow.classList.remove("open");
+    }
+
+    if (arrow2.classList.contains("open")) {
+      arrow2.classList.remove("open");
+    }
+  });
+
+  // ham.addEventListener("click", (e) => {
+  //   if (!subMenu.classList.contains("burger-menu__hidden__link")) {
+  //     subMenu.classList.add("burger-menu__hidden__link");
+  //   }
+
+  //   if (arrow.classList.contains("open")) {
+  //     arrow.classList.remove("open");
+  //   }
+
+  //   if (arrow2.classList.contains("open")) {
+  //     arrow2.classList.remove("open");
+  //   }
+  // });
+
+  function toggleMenu() {
+    menu.classList.toggle("burger-menu_active");
+
+    // if (menu.classList.contains("burger-menu_active")) {
+    //   document.body.style.overflow = "hidden";
+    // } else {
+    //   document.body.style.overflow = "visible";
+    // }
+  }
+}
+
+burgerMenu(".burger-menu");
+
+doubleclickbtn();
 accordionHandle();
 priceTab();
 dropDownElement();
 phoneMask("#form__phone");
-phoneMask("#callback__phone");
-handleButtonClick("#contacts", ".contact");
-handleButtonClick("#courses", ".price");
-handleButtonClick("#about", ".women");
-handleButtonClick("#gallery", ".gallery");
+handleButtonClick(".contactsLink", ".contact");
+handleButtonClick(".coursesLink", ".price");
+handleButtonClick(".aboutLink", ".women");
+handleButtonClick(".galleryLink", ".gallery");
 handleButtonClick("#back-top", ".We");
+handleButtonClick("#logo", ".We");

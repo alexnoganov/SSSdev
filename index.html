@@ -11,6 +11,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
 		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script src="src/lib/Inputmask/inputmask.min.js"></script>
+	<script src="src/lib/jquery.maskedinput.min.js"></script>
 </head>
 
 <body>
@@ -18,14 +19,14 @@
 	<header class="fixed">
 		<div class="container">
 			<div class="Navigator">
-				<div class="logo">Langtime</div>
+				<div class="logo" id="logo">Langtime</div>
 				<div class="NavigatorMenu">
 					<div class="NavigatorButton">
 						<ul class="StyleUl">
-							<li class="StyleLi" id="courses">Курсы</li>
-							<li class="StyleLi" id="about">О нас</li>
-							<li class="StyleLi" id="gallery">Галерея</li>
-							<li class="StyleLi" id="contacts">Контакты</li>
+							<li class="StyleLi coursesLink">Курсы</li>
+							<li class="StyleLi aboutLink">О нас</li>
+							<li class="StyleLi galleryLink">Галерея</li>
+							<li class="StyleLi contactsLink">Контакты</li>
 						</ul>
 					</div>
 					<div class="NavigButtApplication">
@@ -34,14 +35,63 @@
                   color: #424242;
                   margin-right: 25px;
                 ">+380 67 497 40 66</a>
-						<div class="SubmitApp">
-							<button class="call">Заказать звонок</button>
+						<div class="SubmitApp" id="call">
+							<div id="parent__call" class="parent__call__style">
+								<div id="parent__call__overlay" class="parent__call__style__2">
+									<div class="parent__call__style__2__flex">
+										<input class="parent__call__style__2__flex__input" placeholder="Имя">
+										<input id="form__phone__2" class="parent__call__style__2__flex__input"
+											placeholder="+38 (___)-___-__-__" type="tel">
+										<input class="parent__call__style__2__flex__value" type="submit" value="Отправить">
+									</div>
+								</div>
+							</div>
+							<button class="call">
+								Заказать
+								звонок</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
 	</header>
+
+	<div class="burger-menu">
+		<svg class="ham hamRotate ham8 ada burger-menu__botton" viewBox="0 0 100 100" width="80"
+			onclick="this.classList.toggle('active')">
+			<path class="line top "
+				d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+			<path class="line middle " d="m 30,50 h 40" />
+			<path class="line bottom "
+				d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+		</svg>
+		<nav class="burger-menu__nav">
+			<ul class="burger-topmenu">
+				<li class="burger-menu__link coursesLink">Курсы</li>
+				<li class="burger-menu__link aboutLink">О нас</li>
+				<li class="burger-menu__link galleryLink">Галерея</li>
+				<li class="burger-menu__link contactsLink">Контакты</li>
+			</ul>
+			<div class="burder-menu__nav__logo">
+				<span class="burger__logo__langtime">
+					@2021 Langtime
+				</span>
+				<div class="burder-menu__nav__logo__item">
+					<a href="https://www.instagram.com/langtimeod/" target="_blank">
+						<img src="img/inst-white.svg" alt="" />
+					</a>
+				</div>
+				<div class="burder-menu__nav__logo__item">
+					<a href="https://www.facebook.com/langtimeod" target="_blank">
+						<img src="img/fb-white.svg" alt="" />
+					</a>
+				</div>
+
+			</div>
+		</nav>
+		<div class="burger-menu__overlay"></div>
+	</div>
 	<!--todo END HEADER-->
 
 	<div class="We">
@@ -56,349 +106,52 @@
 					Мы те, кто поможет привить любовь к языку.
 				</div>
 				<div class="We__tagline__act">
-					<div class="forms__php">
-						<div class="php_sending">
-							<form method="post" id="forms__php">
-
-								<div class="form">
-									<input type="text" name="name" autocomplete="off" required>
-									<label for="name" class="label-name">
-										<span class="content-name">Имя</span>
-									</label>
-								</div>
-
-								<div class="form">
-									<input type="text" id="form__phone" class="phoneMask" required>
-									<label for="name" class="label-name">
-										<span class="content-name">Номер телефона</span>
-									</label>
-								</div>
-
-								<div class="select">
-									<input class="select__input" type="hidden" name="" />
-									<div class="select__head">Выберите язык</div>
-									<ul class="select__list" style="display: none">
-										<li class="select__item">Английский</li>
-										<li class="select__item">Украинский</li>
-										<li class="select__item">Немецкий</li>
-									</ul>
-								</div>
-
-
-								<button type="submit"
-									class="b-ff-cross-header__button">Отправить
-									заявку</button>
-							</form>
+					<form class="form__main">
+						<div class="group">
+							<input type="text" required placeholder="Имя" />
+							<span class="highlight"></span>
+							<span class="bar"></span>
 						</div>
-					</div>
+						<div class="group">
+							<input type="text" id="form__phone" required placeholder="+38 (___)-___-__-__"/ autocomplete="off">
+							<span class="highlight"></span>
+							<span class="bar"></span>
+						</div>
+
+						<div class="select">
+							<input class="select__input" type="hidden" name="" />
+							<div class="select__head">Выберите язык</div>
+							<ul class="select__list" style="display: none">
+								<li class="select__item">Английский</li>
+								<li class="select__item">Украинский</li>
+								<li class="select__item">Немецкий</li>
+							</ul>
+						</div>
+
+						<div class="btn-box">
+							<button class="btn btn-submit">Отправить заявку</button>
+						</div>
+					</form>
+
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+
 	<!-- todo PRICE TABS START -->
 	<div class="price">
 		<div class="container">
 			<div class="price__title">Выбери язык, который хочешь изучать</div>
 			<div class="price__tabs">
 				<div class="price__tabs__nav">
-					<button class="price__tabs__nav-btn" type="button" data-tab="#tab__1">
-						Английский
-					</button>
 					<button class="price__tabs__nav-btn" type="button" data-tab="#tab__2">
-						Украинский
+						Английский/Украинский
 					</button>
 					<button class="price__tabs__nav-btn" type="button" data-tab="#tab__3">
 						Немецкий
 					</button>
 				</div>
 				<div class="price__tabs__content">
-					<div class="price__tabs__item" id="tab__1">
-						<div class="price__tabs__item__cards">
-							<div class="price__tabs__item__card">
-								<div class="price__tabs__item__card__title">Starters</div>
-								<div class="price__tabs__item__card__list">
-									<ul>
-										<li>Продолжительность занятий: 90 мин.</li>
-										<li>Занятий в месяц: 8.</li>
-										<li>Расписание: Пн-Пт с 15:00 до 19:30</li>
-									</ul>
-								</div>
-							</div>
-							<div class="price__tabs__item__card__wrap">
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Группа
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>оплата за 1 месяц(8 занятий)</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										1100 грн
-									</div>
-								</div>
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Индивидуально
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>
-												оплата за
-												<b style="color: dodgerblue">одно</b> занятие
-											</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										250-300 грн/час
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr class="divider" />
-						<div class="price__tabs__item__cards">
-							<div class="price__tabs__item__card">
-								<div class="price__tabs__item__card__title">Elementary</div>
-								<div class="price__tabs__item__card__list">
-									<ul>
-										<li>Продолжительность занятий: 90 мин.</li>
-										<li>Занятий в месяц: 8.</li>
-										<li>Расписание: Пн-Вт, Чт-Пт с 9:00 до 18:45</li>
-									</ul>
-								</div>
-							</div>
-							<div class="price__tabs__item__card__wrap">
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Группа
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>оплата за 1 месяц(8 занятий)</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										1100 грн
-									</div>
-								</div>
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Индивидуально
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>
-												оплата за
-												<b style="color: dodgerblue">одно</b> занятие
-											</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										250-300 грн/час
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr class="divider" />
-						<div class="price__tabs__item__cards">
-							<div class="price__tabs__item__card">
-								<div class="price__tabs__item__card__title">Intermediate</div>
-								<div class="price__tabs__item__card__list">
-									<ul>
-										<li>Продолжительность занятий: 90 мин.</li>
-										<li>Занятий в месяц: 8.</li>
-										<li>Расписание: Ср, Пт, Сб с 10:30 до 19:45</li>
-									</ul>
-								</div>
-							</div>
-							<div class="price__tabs__item__card__wrap">
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Группа
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>оплата за 1 месяц(8 занятий)</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										1100 грн
-									</div>
-								</div>
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Индивидуально
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>
-												оплата за
-												<b style="color: dodgerblue">одно</b> занятие
-											</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										250-300 грн/час
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr class="divider" />
-						<div class="price__tabs__item__cards">
-							<div class="price__tabs__item__card">
-								<div class="price__tabs__item__card__title">
-									Pre-Intermediate
-								</div>
-								<div class="price__tabs__item__card__list">
-									<ul>
-										<li>Продолжительность занятий: 90 мин.</li>
-										<li>Занятий в месяц: 8.</li>
-										<li>Расписание: Вт, Сб с 18:00 до 21:30</li>
-									</ul>
-								</div>
-							</div>
-							<div class="price__tabs__item__card__wrap">
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Группа
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>оплата за 1 месяц(8 занятий)</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										1100 грн
-									</div>
-								</div>
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Индивидуально
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>
-												оплата за
-												<b style="color: dodgerblue">одно</b> занятие
-											</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										250-300 грн/час
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr class="divider" />
-						<div class="price__tabs__item__cards">
-							<div class="price__tabs__item__card">
-								<div class="price__tabs__item__card__title">
-									Upper-Intermediate
-								</div>
-								<div class="price__tabs__item__card__list">
-									<ul>
-										<li>Продолжительность занятий: 90 мин.</li>
-										<li>Занятий в месяц: 8.</li>
-										<li>Расписание: Вт, Сб с 19:30 до 21:30</li>
-									</ul>
-								</div>
-							</div>
-							<div class="price__tabs__item__card__wrap">
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Группа
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>оплата за 1 месяц(8 занятий)</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										1100 грн
-									</div>
-								</div>
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Индивидуально
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>
-												оплата за
-												<b style="color: dodgerblue">одно</b> занятие
-											</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										250-300 грн/час
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr class="divider" />
-						<div class="price__tabs__item__cards">
-							<div class="price__tabs__item__card">
-								<div class="price__tabs__item__card__title">
-									ПОДГОТОВКА К ЗНО
-								</div>
-								<div class="price__tabs__item__card__list">
-									<ul>
-										<li>Продолжительность занятий: 90-120 мин.</li>
-										<li>Занятий в месяц: 8.</li>
-									</ul>
-								</div>
-							</div>
-							<div class="price__tabs__item__card__wrap">
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Группа
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>оплата за 1 месяц(8 занятий)</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										2200 грн
-									</div>
-								</div>
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Индивидуально
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>
-												оплата за
-												<b style="color: dodgerblue">одно</b> занятие
-											</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										450-500 грн/1.5 час
-									</div>
-								</div>
-								<div class="price__tabs__item__card__cost">
-									<div class="price__tabs__item__card__cost__title">
-										Парное занятие
-									</div>
-									<div class="price__tabs__item__card__cost__body">
-										<div class="price__tabs__item__card__cost__body__text">
-											<p>
-												оплата за
-												<b style="color: dodgerblue">одно</b> занятие
-											</p>
-										</div>
-									</div>
-									<div class="price__tabs__item__card__cost__body__value">
-										800 грн/1.5 час
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="price__tabs__item" id="tab__2">
 						<div class="price__tabs__item__cards">
 							<div class="price__tabs__item__card">
@@ -553,42 +306,10 @@
 		</div>
 	</div>
 	<!--todo PRICE TABS END -->
-	<div class="drop">
-		<div class="container">
-			<div class="drop__it">
-				<div class="drop__it__text">
-					<div class="drop__it__text__call">
-						<div class="drop__it__text__call__bid">
-							Оставь<br />
-							заявку <br />
-							на звонок
-						</div>
-						<div class="drop__it__text__call__time">
-							Мы перезвоним тебе
-							<br />в ближайшее время
-						</div>
-					</div>
-					<div class="drop__it__text__forms">
-						<div class="drop__it__text__forms__input">
-							<input type="text" placeholder="Ваше имя" name="name" required autocomplete="off" autosave />
-						</div>
-						<div class="drop__it__text__forms__input">
-							<input type="text" placeholder="+38 (___)-___-__-__" name="phone" required autosave
-								id="callback__phone" class="phoneMask" />
-						</div>
-						<button class="drop__it__text__forms__button">
-							Оставить заявку
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div id="parent_popup" class="parent__style">
 		<div id="popup" class="popup__style">
-			<div class="parent__popup" onclick="document.getElementById('parent_popup').style.display='none';
-			document.body.style.overflow='visible';"
+			<div class="parent__popup" onclick="document.getElementById('parent_popup').style.display='none'"
 				style="cursor: pointer; z-index: 10">
 				<p class="parent__popup__close"></p>
 			</div>
@@ -631,12 +352,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup').style.display='none';document.body.style.overflow='visible'"></div>
+		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup').style.display='none'">
+		</div>
 	</div>
 
 	<div id="parent_popup__2" class="parent__style">
 		<div id="popup__2" class="popup__style">
-			<div class="parent__popup" onclick="document.getElementById('parent_popup__2').style.display='none';document.body.style.overflow='visible'"
+			<div class="parent__popup" onclick="document.getElementById('parent_popup__2').style.display='none'"
 				style="cursor: pointer; z-index: 10">
 				<p class="parent__popup__close"></p>
 			</div>
@@ -675,12 +397,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__2').style.display='none';document.body.style.overflow='visible'"></div>
+		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__2').style.display='none'">
+		</div>
 	</div>
 
 	<div id="parent_popup__3" class="parent__style">
 		<div id="popup__3" class="popup__style">
-			<div class="parent__popup" onclick="document.getElementById('parent_popup__3').style.display='none';document.body.style.overflow='visible'"
+			<div class="parent__popup" onclick="document.getElementById('parent_popup__3').style.display='none'"
 				style="cursor: pointer; z-index: 10">
 				<p class="parent__popup__close"></p>
 			</div>
@@ -721,12 +444,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__3').style.display='none';document.body.style.overflow='visible'"></div>
+		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__3').style.display='none'">
+		</div>
 	</div>
 
 	<div id="parent_popup__4" class="parent__style">
 		<div id="popup__4" class="popup__style">
-			<div class="parent__popup" onclick="document.getElementById('parent_popup__4').style.display='none';document.body.style.overflow='visible'"
+			<div class="parent__popup" onclick="document.getElementById('parent_popup__4').style.display='none'"
 				style="cursor: pointer; z-index: 10">
 				<p class="parent__popup__close"></p>
 			</div>
@@ -734,7 +458,7 @@
 				<div class="popup__flex__subtitle">
 					<div class="popup__flex__subtitle__img">
 						<div class="dad">
-							<div class="women__in__block__ground unique__2" style="transform: scale(1)">
+							<div class="women__in__block__ground unique__2 women__bgg" style="transform: scale(1)">
 								<div class="women__in__block__ground__img img__unique__3"></div>
 							</div>
 							<div class="women__in__block__text">
@@ -768,12 +492,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__4').style.display='none';document.body.style.overflow='visible'"></div>
+		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__4').style.display='none'">
+		</div>
 	</div>
 
 	<div id="parent_popup__5" class="parent__style">
 		<div id="popup__5" class="popup__style">
-			<div class="parent__popup" onclick="document.getElementById('parent_popup__5').style.display='none';document.body.style.overflow='visible'"
+			<div class="parent__popup" onclick="document.getElementById('parent_popup__5').style.display='none'"
 				style="cursor: pointer; z-index: 10">
 				<p class="parent__popup__close"></p>
 			</div>
@@ -781,7 +506,7 @@
 				<div class="popup__flex__subtitle">
 					<div class="popup__flex__subtitle__img">
 						<div class="dad">
-							<div class="women__in__block__ground unique__0" style="transform: scale(1)">
+							<div class="women__in__block__ground unique__0 women__bgy" style="transform: scale(1)">
 								<div class="women__in__block__ground__img img__unique__4"></div>
 							</div>
 							<div class="women__in__block__text">
@@ -814,12 +539,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__5').style.display='none';document.body.style.overflow='visible'"></div>
+		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__5').style.display='none'">
+		</div>
 	</div>
 
 	<div id="parent_popup__6" class="parent__style">
 		<div id="popup__6" class="popup__style">
-			<div class="parent__popup" onclick="document.getElementById('parent_popup__6').style.display='none';document.body.style.overflow='visible'"
+			<div class="parent__popup" onclick="document.getElementById('parent_popup__6').style.display='none'"
 				style="cursor: pointer; z-index: 10">
 				<p class="parent__popup__close"></p>
 			</div>
@@ -827,7 +553,7 @@
 				<div class="popup__flex__subtitle">
 					<div class="popup__flex__subtitle__img">
 						<div class="dad">
-							<div class="women__in__block__ground unique__1" style="transform: scale(1)">
+							<div class="women__in__block__ground unique__1 women__bgb" style="transform: scale(1)">
 								<div class="women__in__block__ground__img img__unique__5"></div>
 							</div>
 							<div class="women__in__block__text">
@@ -860,78 +586,80 @@
 				</div>
 			</div>
 		</div>
-		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__6').style.display='none';document.body.style.overflow='visible'"></div>
+		<div class="overlay" id="overlay" onclick="document.getElementById('parent_popup__6').style.display='none'">
+		</div>
 	</div>
 
-	<div class="women container">
-		<div class="women__title">Develop. Advance. Achieve.</div>
-		<div class="women__in">
-			<div class="women__in__block" onclick="document.getElementById('parent_popup').style.display='flex';
-			document.body.style.overflow='hidden';">
-				<div class="women__in__block__ground unique__0">
-					<div class="women__in__block__ground__img img__unique__0"></div>
-				</div>
-				<div class="women__in__block__text">
-					<div class="women__in__block__text__title">Докаленко Алена</div>
-					<div class="women__in__block__text__subtitle">
-						Руководитель, преподаватель английского языка, украинского языка и
-						литературы
+	<div class="women">
+		<div class="container">
+			<div class="women__title">Develop. Advance. Achieve.</div>
+			<div class="women__in">
+				<div class="women__in__block" onclick="document.getElementById('parent_popup').style.display='flex';">
+					<div class="women__in__block__ground unique__0">
+						<div class="women__in__block__ground__img img__unique__0"></div>
+					</div>
+					<div class="women__in__block__text">
+						<div class="women__in__block__text__title">Докаленко Алена</div>
+						<div class="women__in__block__text__subtitle">
+							Руководитель, преподаватель английского языка, украинского языка и
+							литературы
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="women__in__block" onclick="document.getElementById('parent_popup__2').style.display='flex';document.body.style.overflow='hidden';">
-				<div class="women__in__block__ground unique__1">
-					<div class="women__in__block__ground__img img__unique__1"></div>
-				</div>
-				<div class="women__in__block__text">
-					<div class="women__in__block__text__title">
-						Василькова Александра
+				<div class="women__in__block" onclick="document.getElementById('parent_popup__2').style.display='flex';">
+					<div class="women__in__block__ground unique__1">
+						<div class="women__in__block__ground__img img__unique__1"></div>
 					</div>
-					<div class="women__in__block__text__subtitle">
-						Преподаватель украинского языка и литературы, английского языка
-					</div>
-				</div>
-			</div>
-			<div class="women__in__block" onclick="document.getElementById('parent_popup__3').style.display='flex';document.body.style.overflow='hidden';">
-				<div class="women__in__block__ground unique__2">
-					<div class="women__in__block__ground__img img__unique__2"></div>
-				</div>
-				<div class="women__in__block__text">
-					<div class="women__in__block__text__title">Докаленко Анастасия</div>
-					<div class="women__in__block__text__subtitle">
-						Преподаватель английского и украинского языков
+					<div class="women__in__block__text">
+						<div class="women__in__block__text__title">
+							Василькова Александра
+						</div>
+						<div class="women__in__block__text__subtitle">
+							Преподаватель украинского языка и литературы, английского языка
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="women__in__block" onclick="document.getElementById('parent_popup__4').style.display='flex';document.body.style.overflow='hidden';">
-				<div class="women__in__block__ground unique__2">
-					<div class="women__in__block__ground__img img__unique__3"></div>
-				</div>
-				<div class="women__in__block__text">
-					<div class="women__in__block__text__title">Воронюк Ксения</div>
-					<div class="women__in__block__text__subtitle">
-						Преподаватель английского и немецкого языков
+				<div class="women__in__block" onclick="document.getElementById('parent_popup__3').style.display='flex';">
+					<div class="women__in__block__ground unique__2">
+						<div class="women__in__block__ground__img img__unique__2"></div>
+					</div>
+					<div class="women__in__block__text">
+						<div class="women__in__block__text__title">Докаленко Анастасия</div>
+						<div class="women__in__block__text__subtitle">
+							Преподаватель английского и украинского языков
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="women__in__block" onclick="document.getElementById('parent_popup__5').style.display='flex';document.body.style.overflow='hidden';">
-				<div class="women__in__block__ground unique__0">
-					<div class="women__in__block__ground__img img__unique__4"></div>
-				</div>
-				<div class="women__in__block__text">
-					<div class="women__in__block__text__title">Мельник Элианна</div>
-					<div class="women__in__block__text__subtitle">
-						Преподаватель английского языка
+				<div class="women__in__block" onclick="document.getElementById('parent_popup__4').style.display='flex';">
+					<div class="women__in__block__ground unique__2 women__bgg">
+						<div class="women__in__block__ground__img img__unique__3"></div>
+					</div>
+					<div class="women__in__block__text">
+						<div class="women__in__block__text__title">Воронюк Ксения</div>
+						<div class="women__in__block__text__subtitle">
+							Преподаватель английского и немецкого языков
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="women__in__block" onclick="document.getElementById('parent_popup__6').style.display='flex';document.body.style.overflow='hidden';">
-				<div class="women__in__block__ground unique__1">
-					<div class="women__in__block__ground__img img__unique__5"></div>
+				<div class="women__in__block" onclick="document.getElementById('parent_popup__5').style.display='flex';">
+					<div class="women__in__block__ground unique__0 women__bgy">
+						<div class="women__in__block__ground__img img__unique__4"></div>
+					</div>
+					<div class="women__in__block__text">
+						<div class="women__in__block__text__title">Мельник Элианна</div>
+						<div class="women__in__block__text__subtitle">
+							Преподаватель английского языка
+						</div>
+					</div>
 				</div>
-				<div class="women__in__block__text">
-					<div class="women__in__block__text__title">Хомко Елизавета</div>
-					<div class="women__in__block__text__subtitle">Администратор, преподаватель украинского языка</div>
+				<div class="women__in__block" onclick="document.getElementById('parent_popup__6').style.display='flex';">
+					<div class="women__in__block__ground unique__1 women__bgb">
+						<div class="women__in__block__ground__img img__unique__5"></div>
+					</div>
+					<div class="women__in__block__text">
+						<div class="women__in__block__text__title">Хомко Елизавета</div>
+						<div class="women__in__block__text__subtitle">Администратор, преподаватель украинского языка</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -939,7 +667,7 @@
 
 	<!-- todo ACHIVE START -->
 	<div class="achive">
-		<div class="container" style="display: flex">
+		<div class="container achive__flex">
 			<div class="achive__col">
 				<div class="achive__text">
 					Каждый из наших студентов - личность, и мы всегда об этом помним.
@@ -973,7 +701,7 @@
 					</div>
 					<div class="achive__checklist__checkbox">
 						<img src="img/checkbox.svg" alt="" />
-						<span>постоянная поддержка в любых ситуациях</span>
+						<span>уют, комфорт и забота о каждом студенте</span>
 					</div>
 					<div class="achive__checklist__checkbox">
 						<img src="img/checkbox.svg" alt="" />
@@ -1015,7 +743,7 @@
 								Выдали более 100 сертификатов
 							</div>
 						</div>
-						<div class="achive__card">
+						<div class="achive__card" id="achive__last">
 							<div class="achive__card__img">
 								<img src="img/group.svg" alt="" />
 							</div>
@@ -1031,40 +759,43 @@
 	<!-- todo ACHIVE END -->
 
 	<!-- todo GALLERY START -->
-	<div class="wrapper">
-		<section class="gallery">
-			<h2 class="gallery__title">Наши воспоминания</h2>
-			<div class="gallery__items">
-				<div class="gallery__item">
-					<img src="img/compress/1.jpg" alt="" />
+	<main class="main">
+		<section class="content">
+			<section class="content__gallery gallery">
+				<h2 class="gallery__title">Галерея</h2>
+				<div class="gallery__items">
+					<div class="gallery__item">
+						<img src="img/gallery/1.jpg" alt="" />
+					</div>
+					<div class="gallery__item gallery__item__big">
+						<img src="img/gallery/2.jpg" alt="" />
+					</div>
+					<div class="gallery__item">
+						<img src="img/gallery/3.jpg" alt="" />
+					</div>
+					<div class="gallery__item">
+						<img src="img/gallery/4.jpg" alt="" />
+					</div>
+					<div class="gallery__item">
+						<img src="img/gallery/5.jpg" alt="" />
+					</div>
+					<div class="gallery__item">
+						<img src="img/gallery/6.jpg" alt="" />
+					</div>
+					<div class="gallery__item gallery__item__big">
+						<img src="img/gallery/7.jpg" alt="" />
+					</div>
+					<div class="gallery__item gallery__item__high">
+						<img src="img/gallery/8.jpg" alt="" />
+					</div>
+					<div class="gallery__item gallery__item__wide">
+						<img src="img/gallery/9.jpg" alt="" />
+					</div>
 				</div>
-				<div class="gallery__item gallery__item__big">
-					<img src="img/compress/2.jpg" alt="" />
-				</div>
-				<div class="gallery__item">
-					<img src="img/compress/5.jpg" alt="" />
-				</div>
-				<div class="gallery__item">
-					<img src="img/compress/4.jpg" alt="" />
-				</div>
-				<div class="gallery__item">
-					<img src="img/compress/8.jpg" alt="" />
-				</div>
-				<div class="gallery__item">
-					<img src="img/compress/7.jpg" alt="" />
-				</div>
-				<div class="gallery__item gallery__item__big">
-					<img src="img/compress/14.jpg" alt="" />
-				</div>
-				<div class="gallery__item gallery__item__high">
-					<img src="img/compress/21.jpg" alt="" />
-				</div>
-				<div class="gallery__item gallery__item__wide">
-					<img src="img/compress/27.jpg" alt="" />
-				</div>
-			</div>
+			</section>
 		</section>
-	</div>
+	</main>
+
 	<div class="wrapper__btn js-accordion gallery__more">
 		<div class="gallery__more__arrow">
 			<span></span>     <span></span>     
@@ -1072,50 +803,54 @@
 		</div>
 		<div class="gallery__more__text">Показать ещё</div>
 	</div>
-	<div class="wrapper__show">
-		<div class="wrapper">
-			<section class="gallery">
-				<div class="gallery__items">
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/29.jpg" alt="" />
+
+	<div class="gallery__show">
+		<main class="main">
+			<section class="content">
+				<section class="content__gallery gallery">
+					<div class="gallery__items">
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/10.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/11.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/12.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__item__wide gallery__none">
+							<img src="img/gallery/13.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__item__high gallery__none">
+							<img src="img/gallery/14.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/15.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/16.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/17.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/18.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/19.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__item__big gallery__none">
+							<img src="img/gallery/20.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/21.jpg" alt="" />
+						</div>
 					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/20.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/23.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__item__wide gallery__none">
-						<img src="img/compress/27.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__item__high gallery__none">
-						<img src="img/compress/26.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/25.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/24.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/23.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/17.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/18.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__item__big gallery__none">
-						<img src="img/compress/11.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/15.jpg" alt="" />
-					</div>
-				</div>
+				</section>
 			</section>
-		</div>
+		</main>
 	</div>
+
 	<div class="wrapper__btn js-accordion gallery__more btn__hide" style="display: none">
 		<div class="gallery__more__arrow">
 			<span></span>     <span></span>     
@@ -1123,32 +858,36 @@
 		</div>
 		<div class="gallery__more__text">Показать ещё</div>
 	</div>
-	<div class="wrapper__show">
-		<div class="wrapper">
-			<section class="gallery">
-				<div class="gallery__items">
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/12.jpg" alt="" />
+
+	<div class="gallery__show" id="gallery__showMT">
+		<main class="main">
+			<section class="content">
+				<section class="content__gallery gallery">
+					<div class="gallery__items">
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/22.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/23.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__none">
+							<img src="img/gallery/24.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__item__big gallery__none">
+							<img src="img/gallery/25.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__item__high gallery__none">
+							<img src="img/gallery/26.jpg" alt="" />
+						</div>
+						<div class="gallery__item gallery__item__wide gallery__none">
+							<img src="img/gallery/27.jpg" alt="" />
+						</div>
 					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/13.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__none">
-						<img src="img/compress/15.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__item__big gallery__none">
-						<img src="img/compress/16.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__item__high gallery__none">
-						<img src="img/compress/18.jpg" alt="" />
-					</div>
-					<div class="gallery__item gallery__item__wide gallery__none">
-						<img src="img/compress/20.jpg" alt="" />
-					</div>
-				</div>
+				</section>
 			</section>
-		</div>
+		</main>
 	</div>
+
 	<!-- todo GALLERY START -->
 
 	<!-- todo WHAT THE SAY ABOUT US START -->
@@ -1156,7 +895,7 @@
 		<div class="container">
 			<div class="wtau__title">Что о нас говорят</div>
 		</div>
-		<div class="wtau__wrap">
+		<div class="wtau__wrap" id="hover">
 			<div class="wtau__card">
 				<div class="wtau__card__text">
 					Если же этот вариант срабатывает слишком медленно или не работает
