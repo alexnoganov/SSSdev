@@ -137,30 +137,29 @@ function handleButtonClick(btnId, target) {
 }
 
 function doubleclickbtn() {
-  const el = document.getElementById("call");
-  el.addEventListener("click", () => {
-    document.getElementById("parent__call").classList.toggle("display_flex");
+  $(document).mouseup(function (e) {
+    var modal = $("#menu");
+    var test = $("#test");
+
+    if (test.is(e.target)) {
+      modal.toggleClass("display_flex");
+    }
+
+    if (
+      !modal.is(e.target) &&
+      modal.has(e.target).length === 0 &&
+      !test.is(e.target)
+    ) {
+      modal.removeClass("display_flex");
+    }
   });
 }
 
-jQuery(function ($) {
-  $(document).mouseup(function (e) {
-    // событие клика по веб-документу
-    var div = $("#call");
-    var div2 = $("#parent__call");
-    if (
-      !div.is(e.target) && // если клик был не по нашему блоку
-      div.has(e.target).length === 0
-    ) {
-      // и не по его дочерним
-      div2.removeClass("display_flex");
-    }
+function wtauHoverMobile() {
+  document.getElementById("hover").addEventListener("click", () => {
+    document.getElementById("hover").classList.toggle("wtau__hover");
   });
-});
-
-document.getElementById("hover").addEventListener("click", () => {
-  document.getElementById("hover").classList.toggle("wtau__hover");
-});
+}
 
 function burgerMenu(selector) {
   let menu = document.querySelector(selector);
@@ -228,12 +227,55 @@ function burgerMenu(selector) {
   }
 }
 
-burgerMenu(".burger-menu");
+function popupHandle() {
+  const womens = document.querySelectorAll(".women__in__block");
 
+  const closeBtns = document.querySelectorAll(".parent__popup");
+
+  const overlays = document.querySelectorAll(".overlay");
+
+  overlays.forEach((overlay) => {
+    const parentPopup = overlay.parentElement;
+
+    overlay.addEventListener("click", () => {
+      if (parentPopup.classList.contains("popup__active")) {
+        parentPopup.classList.remove("popup__active");
+        document.body.style.overflowY = "visible";
+      }
+    });
+  });
+
+  closeBtns.forEach((btn) => {
+    const parentPopup = btn.parentElement.parentElement;
+    btn.addEventListener("click", () => {
+      if (parentPopup.classList.contains("popup__active")) {
+        parentPopup.classList.remove("popup__active");
+        document.body.style.overflowY = "visible";
+      }
+    });
+  });
+
+  womens.forEach((item) => {
+    item.addEventListener("click", () => {
+      const cardId = item.getAttribute("data-num");
+      const popup = document.getElementById(`parent_popup__${cardId}`);
+      popup.classList.add("popup__active");
+      if (
+        document.querySelector(`#parent_popup__${cardId}`).clientWidth <= 860
+      ) {
+        document.body.style.overflowY = "hidden";
+      }
+    });
+  });
+}
+
+burgerMenu(".burger-menu");
+popupHandle();
 doubleclickbtn();
 accordionHandle();
 priceTab();
 dropDownElement();
+wtauHoverMobile();
 phoneMask("#form__phone");
 handleButtonClick(".contactsLink", ".contact");
 handleButtonClick(".coursesLink", ".price");

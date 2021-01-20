@@ -150,6 +150,10 @@ $maxWidth: 1440;
 	&__subtitle {
 		font-family: "Montserrat-Regular";
 		font-size: 25px;
+		color: #000;
+		& a {
+			color: #000;
+		}
 	}
 }
 
@@ -174,7 +178,7 @@ $maxWidth: 1440;
 		padding: 30px 0 80px 0;
 		width: 2640px;
 		will-change: transform;
-		animation: feedback 40s linear infinite running;
+		animation: feedback 10s linear infinite running;
 	}
 
 	&__card {
@@ -192,11 +196,11 @@ $maxWidth: 1440;
 		margin: 0px 0px 0px 40px;
 		padding: 24px;
 		justify-content: space-between;
-		height: 256px;
+		height: 330px;
 
 		&__text {
 			text-align: center;
-			font-size: 20px;
+			font-size: 17px;
 		}
 
 		&__recall {
@@ -618,16 +622,16 @@ $maxWidth: 1440;
 #back-top {
 	position: fixed;
 	background: #fff;
-	z-index: 10000;
+	z-index: 99;
 	width: 50px;
 	height: 50px;
 	border: 1px solid #ccc;
 	border-radius: 50px;
 	bottom: 50px;
-	right: 20px;
+	right: 50px;
 	text-align: center;
 	font-size: 35px;
-	line-height: 50px;
+	line-height: 47px;
 	color: #777;
 	transition: 0.2s;
 
@@ -773,7 +777,8 @@ $width: 280px;
 .parent__call__style {
 	z-index: 100;
 	display: none;
-	top: 65px;
+	top: 18px;
+	left: 30px;
 	position: relative;
 	-ms-flex-pack: end;
 	-ms-flex-align: center;
@@ -788,7 +793,7 @@ $width: 280px;
 		border-style: solid;
 		border-width: 0px 20px 20px;
 		position: absolute;
-		right: 70px;
+		right: 80px;
 		top: -19px;
 	}
 
@@ -880,23 +885,33 @@ $width: 280px;
 	}
 }
 
+@media (max-width: 1460px) {
+	.NavigatorMenu {
+		margin: 0 40px 0 0;
+	}
+}
+
 @media (max-width: 1340px) {
 	.We__tagline__title {
 		margin-top: 60px;
 	}
 }
 
-@media (max-width: 1207px) {
-	.NavigatorMenu {
-		width: 100%;
-	}
+// @media (max-width: 1207px) {
+// 	.NavigatorMenu {
+// 		width: 100%;
+// 	}
 
-	.logo {
-		width: max-content;
-	}
-}
+// 	.logo {
+// 		width: max-content;
+// 	}
+// }
 
 @media (max-width: 1090px) {
+	.NavigatorButton {
+		margin-right: 40px;
+	}
+
 	.price {
 		margin-top: 80px;
 
@@ -930,6 +945,10 @@ $width: 280px;
 }
 
 @media (max-width: 1024px) {
+	.NavigatorMenu {
+		margin: 0 5px 0 0;
+	}
+
 	.contact__content {
 		padding: 0 20px;
 	}
@@ -962,6 +981,10 @@ $width: 280px;
 }
 
 @media (max-width: 970px) {
+	.NavigatorButton {
+		margin-right: 20px;
+	}
+
 	.popup__flex {
 		width: 100%;
 	}
@@ -996,6 +1019,16 @@ $width: 280px;
 }
 
 @media (max-width: 860px) {
+	.popup__flex {
+		margin: 100px 0px 0px 0px;
+	}
+
+	.parent__popup {
+		position: fixed;
+		right: 20px;
+		top: 20px;
+	}
+
 	#gallery__showMT {
 		margin: -20px 0px 0px 0px;
 	}
@@ -1018,12 +1051,11 @@ $width: 280px;
 	.popup__flex__text {
 		display: block;
 		padding: 0 20px;
-		margin-top: 50px;
+		margin: 50px 0;
 	}
 
 	.popup__style {
 		height: 95%;
-		padding: 100px 0 50px 0;
 		overflow-y: scroll;
 	}
 
@@ -1053,7 +1085,20 @@ $width: 280px;
 	}
 }
 
+@media (max-width: 800px) {
+	.SubmitApp {
+		margin-right: 10px;
+	}
+	.logo {
+		margin-left: 10px;
+	}
+}
+
 @media (max-width: 768px) {
+	.women__in__block__ground:hover {
+		transform: scale(1);
+	}
+
 	.burger-menu {
 		display: block !important;
 	}
@@ -1075,10 +1120,6 @@ $width: 280px;
 		position: absolute;
 		top: -10px;
 		left: -10px;
-	}
-
-	.popup__style {
-		padding-top: 150px;
 	}
 
 	.We {
@@ -1176,6 +1217,10 @@ $width: 280px;
 }
 
 @media (max-width: 564px) {
+	.popup__flex {
+		margin: 150px 0px 0px 0px;
+	}
+
 	#achive__last {
 		margin: -15px 0px 0px 0px;
 	}
@@ -1225,6 +1270,10 @@ $width: 280px;
 }
 
 @media (max-width: 450px) {
+	.popup__flex {
+		margin: 130px 0px 0px 0px;
+	}
+
 	.dad {
 		margin-top: 100px;
 	}
@@ -1269,6 +1318,10 @@ $width: 280px;
 }
 
 @media (max-width: 360px) {
+	.popup__flex {
+		margin: 90px 0px 0px 0px;
+	}
+
 	#gallery__showMT {
 		margin: -25px 0px 0px 0px;
 	}
@@ -1362,7 +1415,7 @@ $width: 280px;
 		@include adaptiv-font(16, 14);
 
 		&__text {
-			@include adaptiv-font(20, 16);
+			@include adaptiv-font(17, 13);
 		}
 	}
 

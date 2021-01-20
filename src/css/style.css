@@ -235,6 +235,11 @@ html {
 .contact__subtitle {
   font-family: "Montserrat-Regular";
   font-size: 25px;
+  color: #000;
+}
+
+.contact__subtitle a {
+  color: #000;
 }
 
 .wtau {
@@ -261,8 +266,8 @@ html {
   padding: 30px 0 80px 0;
   width: 2640px;
   will-change: transform;
-  -webkit-animation: feedback 40s linear infinite running;
-          animation: feedback 40s linear infinite running;
+  -webkit-animation: feedback 10s linear infinite running;
+          animation: feedback 10s linear infinite running;
 }
 
 .wtau__card {
@@ -287,12 +292,12 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 256px;
+  height: 330px;
 }
 
 .wtau__card__text {
   text-align: center;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .wtau__card__recall {
@@ -808,16 +813,16 @@ html {
 #back-top {
   position: fixed;
   background: #fff;
-  z-index: 10000;
+  z-index: 99;
   width: 50px;
   height: 50px;
   border: 1px solid #ccc;
   border-radius: 50px;
   bottom: 50px;
-  right: 20px;
+  right: 50px;
   text-align: center;
   font-size: 35px;
-  line-height: 50px;
+  line-height: 47px;
   color: #777;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -986,7 +991,8 @@ html {
 .parent__call__style {
   z-index: 100;
   display: none;
-  top: 65px;
+  top: 18px;
+  left: 30px;
   position: relative;
   -ms-flex-pack: end;
   -ms-flex-align: center;
@@ -1002,7 +1008,7 @@ html {
   border-style: solid;
   border-width: 0px 20px 20px;
   position: absolute;
-  right: 70px;
+  right: 80px;
   top: -19px;
 }
 
@@ -1108,24 +1114,22 @@ html {
   }
 }
 
+@media (max-width: 1460px) {
+  .NavigatorMenu {
+    margin: 0 40px 0 0;
+  }
+}
+
 @media (max-width: 1340px) {
   .We__tagline__title {
     margin-top: 60px;
   }
 }
 
-@media (max-width: 1207px) {
-  .NavigatorMenu {
-    width: 100%;
-  }
-  .logo {
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-  }
-}
-
 @media (max-width: 1090px) {
+  .NavigatorButton {
+    margin-right: 40px;
+  }
   .price {
     margin-top: 80px;
   }
@@ -1155,6 +1159,9 @@ html {
 }
 
 @media (max-width: 1024px) {
+  .NavigatorMenu {
+    margin: 0 5px 0 0;
+  }
   .contact__content {
     padding: 0 20px;
   }
@@ -1184,6 +1191,9 @@ html {
 }
 
 @media (max-width: 970px) {
+  .NavigatorButton {
+    margin-right: 20px;
+  }
   .popup__flex {
     width: 100%;
   }
@@ -1212,6 +1222,14 @@ html {
 }
 
 @media (max-width: 860px) {
+  .popup__flex {
+    margin: 100px 0px 0px 0px;
+  }
+  .parent__popup {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+  }
   #gallery__showMT {
     margin: -20px 0px 0px 0px;
   }
@@ -1237,11 +1255,10 @@ html {
   .popup__flex__text {
     display: block;
     padding: 0 20px;
-    margin-top: 50px;
+    margin: 50px 0;
   }
   .popup__style {
     height: 95%;
-    padding: 100px 0 50px 0;
     overflow-y: scroll;
   }
   .achive__card__img img {
@@ -1265,7 +1282,21 @@ html {
   }
 }
 
+@media (max-width: 800px) {
+  .SubmitApp {
+    margin-right: 10px;
+  }
+  .logo {
+    margin-left: 10px;
+  }
+}
+
 @media (max-width: 768px) {
+  .women__in__block__ground:hover {
+    -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+  }
   .burger-menu {
     display: block !important;
   }
@@ -1287,9 +1318,6 @@ html {
     position: absolute;
     top: -10px;
     left: -10px;
-  }
-  .popup__style {
-    padding-top: 150px;
   }
   .We {
     background-position: left;
@@ -1378,6 +1406,9 @@ html {
 }
 
 @media (max-width: 564px) {
+  .popup__flex {
+    margin: 150px 0px 0px 0px;
+  }
   #achive__last {
     margin: -15px 0px 0px 0px;
   }
@@ -1419,6 +1450,9 @@ html {
 }
 
 @media (max-width: 450px) {
+  .popup__flex {
+    margin: 130px 0px 0px 0px;
+  }
   .dad {
     margin-top: 100px;
   }
@@ -1456,6 +1490,9 @@ html {
 }
 
 @media (max-width: 360px) {
+  .popup__flex {
+    margin: 90px 0px 0px 0px;
+  }
   #gallery__showMT {
     margin: -25px 0px 0px 0px;
   }
@@ -1531,7 +1568,7 @@ html {
     font-size: calc(14px + 2 * ((100vw - 320px) / 1120));
   }
   .wtau__card__text {
-    font-size: calc(16px + 4 * ((100vw - 320px) / 1120));
+    font-size: calc(13px + 4 * ((100vw - 320px) / 1120));
   }
   .achive__logo {
     font-size: calc(60px + 58 * ((100vw - 320px) / 1120));
