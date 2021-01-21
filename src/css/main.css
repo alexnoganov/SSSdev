@@ -295,12 +295,12 @@ button:focus {
 .women__in__block__ground {
 	width: 400px;
 	height: 370px;
-	display: -webkit-box;
+	/* display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-align: end;
 	-ms-flex-align: end;
-	align-items: flex-end;
+	align-items: flex-end; */
 	transition: 1.2s;
 }
 
@@ -313,6 +313,8 @@ button:focus {
 	background-size: 400px 450px;
 	width: 400px;
 	height: 450px;
+	position: absolute;
+	bottom: 0;
 }
 
 .women__in__block__text {
