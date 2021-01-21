@@ -156,9 +156,13 @@ function doubleclickbtn() {
 }
 
 function wtauHoverMobile() {
-  document.getElementById("hover").addEventListener("click", () => {
-    document.getElementById("hover").classList.toggle("wtau__hover");
-  });
+  document
+    .querySelector(".js-marquee-wrapper")
+    .addEventListener("click", () => {
+      document
+        .querySelector(".js-marquee-wrapper")
+        .classList.toggle("wtau__hover");
+    });
 }
 
 function burgerMenu(selector) {
@@ -269,6 +273,23 @@ function popupHandle() {
   });
 }
 
+function wtauMarquee() {
+  if (document.body.clientWidth <= 375) {
+    $(".wtau__wrap").marquee({
+      duration: 15000,
+      startVisible: true,
+      duplicated: true,
+    });
+  } else {
+    $(".wtau__wrap").marquee({
+      duration: 20000,
+      startVisible: true,
+      duplicated: true,
+    });
+  }
+}
+
+wtauMarquee();
 burgerMenu(".burger-menu");
 popupHandle();
 doubleclickbtn();
@@ -277,6 +298,7 @@ priceTab();
 dropDownElement();
 wtauHoverMobile();
 phoneMask("#form__phone");
+phoneMask("#form__phone__2");
 handleButtonClick(".contactsLink", ".contact");
 handleButtonClick(".coursesLink", ".price");
 handleButtonClick(".aboutLink", ".women");
