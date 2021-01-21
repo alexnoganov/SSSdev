@@ -1233,6 +1233,8 @@ html {
   }
   .popup__flex {
     margin: 100px 0px 0px 0px;
+    -webkit-margin-before: 100px;
+            margin-block-start: 100px;
   }
   .parent__popup {
     position: fixed;
