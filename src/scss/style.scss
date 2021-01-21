@@ -1019,7 +1019,7 @@ $width: 280px;
 	}
 
 	.popup__flex {
-		margin: 130px 0px 0px 0px;
+		margin: 100px 0px 0px 0px;
 	}
 
 	.parent__popup {
@@ -1094,10 +1094,6 @@ $width: 280px;
 }
 
 @media (max-width: 768px) {
-	.popup__flex {
-		margin: 150px 0px 0px 0px;
-	}
-
 	.women__in__block__ground:hover {
 		transform: scale(1);
 	}
@@ -1220,10 +1216,6 @@ $width: 280px;
 }
 
 @media (max-width: 564px) {
-	.popup__flex {
-		margin: 200px 0px 0px 0px;
-	}
-
 	#achive__last {
 		margin: -15px 0px 0px 0px;
 	}
@@ -1273,10 +1265,6 @@ $width: 280px;
 }
 
 @media (max-width: 450px) {
-	.dad {
-		margin-top: 100px;
-	}
-
 	.wtau__card {
 		max-width: 350px;
 		height: 300px;
@@ -1317,10 +1305,6 @@ $width: 280px;
 }
 
 @media (max-width: 360px) {
-	.popup__flex {
-		margin: 150px 0px 0px 0px;
-	}
-
 	#gallery__showMT {
 		margin: -25px 0px 0px 0px;
 	}
@@ -1335,10 +1319,6 @@ $width: 280px;
 
 	.gallery__item {
 		margin: 0px 0px 5px 0px;
-	}
-
-	.dad {
-		margin-top: 200px;
 	}
 
 	.form__main {
