@@ -302,6 +302,7 @@ button:focus {
 	-ms-flex-align: end;
 	align-items: flex-end; */
 	transition: 1.2s;
+	position: relative;
 }
 
 
